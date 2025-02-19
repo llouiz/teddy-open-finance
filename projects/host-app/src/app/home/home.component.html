@@ -1,0 +1,19 @@
+
+<style>
+    .body {
+        margin-top: 130px;
+    }
+
+    .body h1 {
+        margin: 40px;
+    }
+
+</style>
+
+<app-navbar></app-navbar>
+
+<div *ngIf="userInfo" class="body">
+    <h1><span style="color: rgb(134, 131, 126);">Olá, </span> <span style="color: rgb(235, 143, 23);">{{ userInfo.username }}</span> </h1>
+</div>
+
+<app-footer></app-footer>
