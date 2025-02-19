@@ -1,0 +1,50 @@
+<style>
+    .login-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(231, 231, 219);
+        padding-top: 100px;
+        padding-bottom: 100px;
+        width: 40%;
+        align-items: center;
+    }
+
+    .login-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .login-full-width {
+        width: 100%;
+    }
+
+</style>
+
+<app-navbar></app-navbar>
+
+<div class="login-container">
+    <h2 style="margin-top: -50px; color: rgb(235, 143, 23);">Login</h2>
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="login-full-width">
+            <mat-label>Usuário</mat-label>
+            <input matInput formControlName="username" >
+        </mat-form-field>
+    
+        <mat-form-field class="login-full-width">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput autocomplete="on" formControlName="password">
+        </mat-form-field>
+
+        <div style="margin-bottom: 10px;">
+            <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="check($event.checked)">Lembrar-me</mat-checkbox>
+        </div>
+        <button [disabled]="loginForm.invalid" mat-flat-button color="primary" type="submit">Login</button>
+    </form>
+</div>
+
+<app-footer></app-footer>
