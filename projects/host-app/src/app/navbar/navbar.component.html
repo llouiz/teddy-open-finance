@@ -1,0 +1,60 @@
+
+<style>
+    h1 {
+        margin-left: 50px;
+        float: left;
+        margin-top: 10px;
+        flex: 1;
+    }
+
+    .header-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #000;
+        display: flex;
+    }
+
+    .menu {
+        flex: 0.6;
+    }
+
+    .menu button {
+       color: #fff;
+       margin-top: 10px;
+    }
+
+    .menu button:hover {
+        color: rgb(235, 143, 23);
+    }
+
+</style>
+
+<div class="header-container">
+    <h1 style="color: rgb(235, 143, 23);" routerLink="/home">
+        <span style="cursor: pointer;">Teddy Open Finance</span>
+    </h1>
+
+    <div *ngIf="userInfo" class="menu">
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Parceiros</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button mat-menu-item>Cadastrar parceiro</button>
+            <button mat-menu-item>Listar todos os parceiros</button>
+        </mat-menu>
+    
+        <button mat-button [matMenuTriggerFor]="belowMenu">Empresa Externa</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <button mat-menu-item>Cadastrar empresa externa</button>
+            <button mat-menu-item>Listar as empresa externas</button>
+        </mat-menu>
+    
+        <button mat-button routerLink="/about">Sobre a aplicação</button>
+    
+        <button mat-button (click)="logout()">Sair</button>
+    </div>
+</div>
