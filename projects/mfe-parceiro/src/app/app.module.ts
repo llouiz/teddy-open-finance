@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListagemModule } from './listagem/listagem.module';
-import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +12,7 @@ import { CadastroModule } from './cadastro/cadastro.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ListagemModule,
-    CadastroModule
+    ListagemModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

@@ -30,17 +30,6 @@ const routes: Routes = [
       })
       .then((m) => m.ListagemModule).catch(err => console.log(err)
       )
-  },
-  {
-    path: 'cadastro-parceiros',
-    loadChildren: () =>
-      loadRemoteModule({
-        remoteEntry: PARCEIROS_ENTRY,
-        remoteName: 'mfeParceiro',
-        exposedModule: './CadastroModule'
-      })
-      .then((m) => m.CadastroModule).catch(err => console.log(err)
-      )
   }
 ];
 
