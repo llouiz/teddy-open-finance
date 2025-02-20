@@ -16,12 +16,32 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   });
 
+  userInfo = {
+    username: ''
+  };
+
   constructor(
     private router: Router,
     private cookieService: CookieService
   ) {};
-  
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.userInfo = this.getUserInfo();
+
+    if (this.userInfo) {
+        this.router.navigateByUrl('home');
+    }
+  }
+
+  getUserInfo() {
+    let userInfo = localStorage.getItem('userInfo');
+
+    if (!userInfo) {
+        userInfo = this.cookieService.get('userInfo');
+    }
+
+    return userInfo ? JSON.parse(userInfo) : null;
+  }
 
   check(value: any) {
     this.checked = value;

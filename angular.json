@@ -3,107 +3,6 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"mfe-login": {
-			"projectType": "application",
-			"schematics": {},
-			"root": "projects/mfe-login",
-			"sourceRoot": "projects/mfe-login/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/mfe-login",
-						"index": "projects/mfe-login/src/index.html",
-						"main": "projects/mfe-login/src/main.ts",
-						"polyfills": [
-							"zone.js"
-						],
-						"tsConfig": "projects/mfe-login/tsconfig.app.json",
-						"assets": [
-							"projects/mfe-login/src/favicon.ico",
-							"projects/mfe-login/src/assets"
-						],
-						"styles": [
-							"projects/mfe-login/src/styles.css"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/mfe-login/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/mfe-login/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "mfe-login:build:production",
-							"extraWebpackConfig": "projects/mfe-login/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "mfe-login:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 4300,
-						"publicHost": "http://localhost:4300",
-						"extraWebpackConfig": "projects/mfe-login/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "mfe-login:build",
-						"extraWebpackConfig": "projects/mfe-login/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
-						"tsConfig": "projects/mfe-login/tsconfig.spec.json",
-						"assets": [
-							"projects/mfe-login/src/favicon.ico",
-							"projects/mfe-login/src/assets"
-						],
-						"styles": [
-							"projects/mfe-login/src/styles.css"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
 		"host-app": {
 			"projectType": "application",
 			"schematics": {},
@@ -199,6 +98,107 @@
 						],
 						"styles": [
 							"projects/host-app/src/styles.css"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"mfe-parceiro": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/mfe-parceiro",
+			"sourceRoot": "projects/mfe-parceiro/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/mfe-parceiro",
+						"index": "projects/mfe-parceiro/src/index.html",
+						"main": "projects/mfe-parceiro/src/main.ts",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/mfe-parceiro/tsconfig.app.json",
+						"assets": [
+							"projects/mfe-parceiro/src/favicon.ico",
+							"projects/mfe-parceiro/src/assets"
+						],
+						"styles": [
+							"projects/mfe-parceiro/src/styles.css"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/mfe-parceiro/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/mfe-parceiro/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "mfe-parceiro:build:production",
+							"extraWebpackConfig": "projects/mfe-parceiro/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "mfe-parceiro:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4300,
+						"publicHost": "http://localhost:4300",
+						"extraWebpackConfig": "projects/mfe-parceiro/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "mfe-parceiro:build",
+						"extraWebpackConfig": "projects/mfe-parceiro/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/mfe-parceiro/tsconfig.spec.json",
+						"assets": [
+							"projects/mfe-parceiro/src/favicon.ico",
+							"projects/mfe-parceiro/src/assets"
+						],
+						"styles": [
+							"projects/mfe-parceiro/src/styles.css"
 						],
 						"scripts": []
 					}

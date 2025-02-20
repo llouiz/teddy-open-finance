@@ -31,6 +31,14 @@ export class NavbarComponent {
       return userInfo ? JSON.parse(userInfo) : null;
     }
 
+    goHome() {
+      this.router.navigate(['/home']);
+    }
+
+    aboutApp() {
+      this.router.navigate(['/about']);
+    }
+
     logout() {
       localStorage.removeItem('userInfo');
 

@@ -36,15 +36,15 @@
 </style>
 
 <div class="header-container">
-    <h1 style="color: rgb(235, 143, 23);" routerLink="/home">
+    <h1 style="color: rgb(235, 143, 23);" (click)="goHome()">
         <span style="cursor: pointer;">Teddy Open Finance</span>
     </h1>
 
     <div *ngIf="userInfo" class="menu">
         <button mat-button [matMenuTriggerFor]="aboveMenu">Parceiros</button>
         <mat-menu #aboveMenu="matMenu" yPosition="above">
-            <button mat-menu-item>Cadastrar parceiro</button>
-            <button mat-menu-item>Listar todos os parceiros</button>
+            <button mat-menu-item routerLink="/cadastro-parceiros">Cadastrar parceiro</button>
+            <button mat-menu-item routerLink="/listagem-parceiros">Listar todos os parceiros</button>
         </mat-menu>
     
         <button mat-button [matMenuTriggerFor]="belowMenu">Empresa Externa</button>
@@ -53,7 +53,7 @@
             <button mat-menu-item>Listar as empresa externas</button>
         </mat-menu>
     
-        <button mat-button routerLink="/about">Sobre a aplicação</button>
+        <button mat-button (click)="aboutApp()">Sobre a aplicação</button>
     
         <button mat-button (click)="logout()">Sair</button>
     </div>
