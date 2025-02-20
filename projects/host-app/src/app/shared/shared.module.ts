@@ -12,8 +12,6 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,26 +20,18 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     HttpClientModule,
-    BrowserAnimationsModule,
-    RouterModule,
     NavbarComponent,
     FooterComponent,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    RouterModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
