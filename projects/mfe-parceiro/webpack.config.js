@@ -10,13 +10,13 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "hostApp",
+    uniqueName: "mfeParceiro",
     publicPath: "auto",
     scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false
-  },
+  },   
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -28,27 +28,29 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
         // For remotes (please adjust)
-        // name: "hostApp",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './projects/host-app/src/app/app.component.ts',
+        name: "mfeParceiro",
+        filename: "remoteEntry.js",
+        exposes: {
+            './ListagemModule': './projects/mfe-parceiro/src/app/listagem/listagem.module.ts',
+            './CadastroModule': './projects/mfe-parceiro/src/app/cadastro/cadastro.module.ts',
+        },        
+        
+        // For hosts (please adjust)
+        // remotes: {
+        //     "mfeLogin": "http://localhost:4300/remoteEntry.js",
+        //     "hostApp": "http://localhost:4200/remoteEntry.js",
+
         // },
 
-        // For hosts (please adjust)
-        remotes: {
-            "mfeParceiro": "mfeParceiro@http://localhost:4300/remoteEntry.js",
-
-        },
-
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })
-
+        
     }),
     sharedMappings.getPlugin()
   ],

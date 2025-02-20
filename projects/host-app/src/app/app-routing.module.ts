@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 
-const LOGIN_ENTRY = 'http://localhost:4300/remoteEntry.js';
+const PARCEIROS_ENTRY = 'http://localhost:4300/remoteEntry.js';
 
 const routes: Routes = [
   {
@@ -21,14 +21,25 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'login',
+    path: 'listagem-parceiros',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: LOGIN_ENTRY,
-        remoteName: 'mfeLogin',
-        exposedModule: './LoginModule'
+        remoteEntry: PARCEIROS_ENTRY,
+        remoteName: 'mfeParceiro',
+        exposedModule: './ListagemModule'
       })
-      .then((m) => m.LoginModule).catch(err => console.log(err)
+      .then((m) => m.ListagemModule).catch(err => console.log(err)
+      )
+  },
+  {
+    path: 'cadastro-parceiros',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: PARCEIROS_ENTRY,
+        remoteName: 'mfeParceiro',
+        exposedModule: './CadastroModule'
+      })
+      .then((m) => m.CadastroModule).catch(err => console.log(err)
       )
   }
 ];
