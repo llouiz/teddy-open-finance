@@ -25,9 +25,13 @@
 							"projects/host-app/src/assets"
 						],
 						"styles": [
-							"projects/host-app/src/styles.css"
+							"projects/host-app/src/styles.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+						],
 						"extraWebpackConfig": "projects/host-app/webpack.config.js",
 						"commonChunk": false
 					},
@@ -126,9 +130,13 @@
 							"projects/mfe-parceiro/src/assets"
 						],
 						"styles": [
-							"projects/mfe-parceiro/src/styles.css"
+							"projects/mfe-parceiro/src/styles.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+						],
 						"extraWebpackConfig": "projects/mfe-parceiro/webpack.config.js",
 						"commonChunk": false
 					},
