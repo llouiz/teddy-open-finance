@@ -59,6 +59,17 @@ const routes: Routes = [
       ,
       canActivate: [ AuthGuard ]
   },
+  {
+    path: 'cadastro-empresas',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: EMPRESAS_ENTRY,
+        remoteName: 'mfeEmpresa',
+        exposedModule: './CadastroModule'
+      })
+      .then((m) => m.CadastroModule).catch(err => console.log(err)
+      )
+  }
 ];
 
 @NgModule({

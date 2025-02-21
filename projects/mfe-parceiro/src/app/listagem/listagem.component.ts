@@ -67,6 +67,7 @@ export class ListagemComponent implements OnInit {
         name: new FormControl(e.name,Validators.required),
         description: new FormControl(e.description,Validators.required),
       });
+      console.log('parceiros', parceiros);
       
       parceiros.forEach(parceiro => {
         this.parceiros.push({...parceiro, editable: false, validator: editForm(parceiro)})
