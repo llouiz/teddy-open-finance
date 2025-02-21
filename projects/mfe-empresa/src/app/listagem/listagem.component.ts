@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import  {MatPaginator } from '@angular/material/paginator';
-import { ParceiroService } from '../parceiro.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PaginationService } from '../pagination/pagination.service';
+import { PaginationService } from '../pagination.service';
 import { CookieService } from 'ngx-cookie-service';
+import { EmpresaService } from '../parceiro.service';
 
 @Component({
   selector: 'app-listagem',
@@ -19,9 +19,9 @@ export class ListagemComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'description', 'action'];
 
-  parceiros: any[] = [];
+  empresas: any[] = [];
 
-  dataSource = new MatTableDataSource(this.parceiros);
+  dataSource = new MatTableDataSource(this.empresas);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -33,7 +33,7 @@ export class ListagemComponent implements OnInit {
   totalPages: number = 0;
 
   constructor(
-    private parceiroService: ParceiroService,
+    private empresaService: EmpresaService,
     private router: Router,
     private route: ActivatedRoute,
     private paginationService: PaginationService,
@@ -47,7 +47,7 @@ export class ListagemComponent implements OnInit {
       this.router.navigateByUrl('');
     }
 
-    this.buscaParceiros();
+    this.buscaEmpresas();
   }
 
   getUserInfo() {
@@ -60,19 +60,19 @@ export class ListagemComponent implements OnInit {
     return userInfo ? JSON.parse(userInfo) : null;
   }
 
-  buscaParceiros() {
-    this.parceiroService.buscaParceiros().subscribe((parceiros) =>
+  buscaEmpresas() {
+    this.empresaService.buscaEmpresas().subscribe((empresas: any) =>
     {
       const editForm = (e: any) => new FormGroup({
         name: new FormControl(e.name,Validators.required),
         description: new FormControl(e.description,Validators.required),
       });
       
-      parceiros.forEach(parceiro => {
-        this.parceiros.push({...parceiro, editable: false, validator: editForm(parceiro)})
+      empresas.forEach((empresa: any) => {
+        this.empresas.push({...empresa, editable: false, validator: editForm(empresa)})
       });
 
-      this.paginatedData = this.parceiros;
+      this.paginatedData = this.empresas;
 
       this.totalPages = Math.ceil(this.paginatedData.length / this.pageSize);
 
@@ -83,7 +83,7 @@ export class ListagemComponent implements OnInit {
         this.updatePagination();
       });
 
-      this.dataSource = new MatTableDataSource(this.parceiros);
+      this.dataSource = new MatTableDataSource(this.empresas);
     });
   }
 
@@ -106,51 +106,51 @@ export class ListagemComponent implements OnInit {
   }
 
   updatePagination(): void {
-    this.parceiros = this.paginationService.paginate(this.paginatedData, this.currentPage, this.pageSize);
+    this.empresas = this.paginationService.paginate(this.paginatedData, this.currentPage, this.pageSize);
 
-    this.dataSource = new MatTableDataSource(this.parceiros);
+    this.dataSource = new MatTableDataSource(this.empresas);
   }
 
-  editar(parceiro: any) {
-    parceiro.editable = true;
+  editar(empresa: any) {
+    empresa.editable = true;
   }
 
-  confirmarEdicao(parceiro: any) {
-    parceiro.editable = false;
+  confirmarEdicao(empresa: any) {
+    empresa.editable = false;
 
     const dataToBeUpdated = {
-      id: parceiro.id,
-      name: parceiro.validator.controls.name.value,
-      description: parceiro.validator.controls.description.value
+      id: empresa.id,
+      name: empresa.validator.controls.name.value,
+      description: empresa.validator.controls.description.value
     };
 
-    this.parceiroService.atualizar(dataToBeUpdated).subscribe((parceiroAtualizado) => {
-      window.location.href = '/listagem-parceiros';
+    this.empresaService.atualizar(dataToBeUpdated).subscribe((empresaAtualizado: any) => {
+      window.location.href = '/listagem-empresas';
 
-      this.parceiros = [];
-    }, error => console.log(error)
+      this.empresas = [];
+    }, (error: any) => console.log(error)
     );
   }
 
-  cancelarDeletar(parceiro: any, i: number) {
-    if (parceiro.editable) {
-      parceiro.editable = false;
+  cancelarDeletar(empresa: any, i: number) {
+    if (empresa.editable) {
+      empresa.editable = false;
       // Reseta formulário
-      Object.keys(parceiro.validator.controls).forEach(item => {
-        parceiro.validator.controls[item].patchValue(parceiro[item]);
+      Object.keys(empresa.validator.controls).forEach(item => {
+        empresa.validator.controls[item].patchValue(empresa[item]);
       });
     } else {
-      this.remove(parceiro);
+      this.remove(empresa);
     }
   }
 
-  remove(parceiro: any) {
-    const { id } = parceiro;
+  remove(empresa: any) {
+    const { id } = empresa;
 
-    this.parceiroService.removerParceiro(id as number).subscribe(() => {
-      window.location.href = '/listagem-parceiros';
+    this.empresaService.removerEmpresa(id as number).subscribe(() => {
+      window.location.href = '/listagem-empresas';
 
-      this.parceiros = [];
-    }, error => console.log(error));
+      this.empresas = [];
+    }, (error: any) => console.log(error));
   }
 }

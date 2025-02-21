@@ -10,13 +10,13 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "hostApp",
+    uniqueName: "mfeEmpresa",
     publicPath: "auto",
     scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false
-  },
+  },   
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -27,28 +27,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+
         // For remotes (please adjust)
-        // name: "hostApp",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './projects/host-app/src/app/app.component.ts',
+        name: "mfeEmpresa",
+        filename: "remoteEntry.js",
+        exposes: {
+            './ListagemModule': './projects/mfe-empresa/src/app/listagem/listagem.module.ts',
+        },        
+        
+        // For hosts (please adjust)
+        // remotes: {
+        //     "hostApp": "http://localhost:4200/remoteEntry.js",
+        //     "mfeParceiro": "http://localhost:4300/remoteEntry.js",
+
         // },
 
-        // For hosts (please adjust)
-        remotes: {
-            "mfeParceiro": "mfeParceiro@http://localhost:4300/remoteEntry.js",
-            "mfeEmpresa": "mfeEmpresa@http://localhost:4400/remoteEntry.js",
-        },
-
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })
-
+        
     }),
     sharedMappings.getPlugin()
   ],

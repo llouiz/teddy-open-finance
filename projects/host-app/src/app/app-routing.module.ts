@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './auth.guard';
 
 const PARCEIROS_ENTRY = 'http://localhost:4300/remoteEntry.js';
+const EMPRESAS_ENTRY = 'http://localhost:4400/remoteEntry.js';
 
 const routes: Routes = [
   {
@@ -44,7 +45,20 @@ const routes: Routes = [
       })
       .then((m) => m.CadastroModule).catch(err => console.log(err)
       )
-  }
+  },
+  {
+    path: 'listagem-empresas',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: EMPRESAS_ENTRY,
+        remoteName: 'mfeEmpresa',
+        exposedModule: './ListagemModule'
+      })
+      .then((m) => m.ListagemModule).catch(err => console.log(err)
+      )
+      ,
+      canActivate: [ AuthGuard ]
+  },
 ];
 
 @NgModule({
