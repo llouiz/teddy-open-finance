@@ -33,6 +33,17 @@ const routes: Routes = [
       )
       ,
       canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'cadastro-parceiros',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: PARCEIROS_ENTRY,
+        remoteName: 'mfeParceiro',
+        exposedModule: './CadastroModule'
+      })
+      .then((m) => m.CadastroModule).catch(err => console.log(err)
+      )
   }
 ];
 

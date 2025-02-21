@@ -132,9 +132,9 @@ export class ListagemComponent implements OnInit {
     };
 
     this.parceiroService.atualizar(dataToBeUpdated).subscribe((parceiroAtualizado) => {
-      this.router.navigate(['/listagem-parceiros']);
+      window.location.href = '/listagem-parceiros';
 
-      this.buscaParceiros();
+      this.parceiros = [];
     }, error => console.log(error)
     );
   }
@@ -155,9 +155,7 @@ export class ListagemComponent implements OnInit {
     const { id } = parceiro;
 
     this.parceiroService.removerParceiro(id as number).subscribe(() => {
-      this.router.navigate(['/listagem-parceiros']);
-
-      this.buscaParceiros();
+      window.location.href = '/listagem-parceiros';
 
       this.parceiros = [];
     }, error => console.log(error));

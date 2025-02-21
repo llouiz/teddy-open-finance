@@ -1,5 +1,54 @@
+<style>
+    .cadastro-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(231, 231, 219);
+        padding-top: 100px;
+        padding-bottom: 100px;
+        width: 40%;
+        align-items: center;
+    }
+
+    .cadastro-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .cadastro-full-width {
+        width: 100%;
+    }
+    
+    .submit-btn {
+        padding: 10px;
+        width: 150px;
+        border-radius: 20px;
+        color: #fff;
+        background-color: #eb8b1e;
+        border: none;
+    }
+</style>
+
 <app-navbar></app-navbar>
 
-<p>cadastro works!</p>
+<div *ngIf="userInfo" class="cadastro-container">
+    <h1 style="text-align: center; padding-bottom: 80px; color: #6e6e6e;">Cadastro de Parceiro</h1>
+    <form [formGroup]="cadastroForm" class="cadastro-form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="cadastro-full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" >
+        </mat-form-field>
+    
+        <mat-form-field class="cadastro-full-width">
+            <mat-label>Descrição</mat-label>
+            <input type="text" matInput autocomplete="on" formControlName="description">
+        </mat-form-field>
+        <button class="submit-btn" [disabled]="cadastroForm.invalid" mat-flat-button color="primary" type="submit">Cadastrar</button>
+    </form>
+</div>
 
 <app-footer></app-footer>

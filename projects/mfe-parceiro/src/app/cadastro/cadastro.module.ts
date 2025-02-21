@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from 'projects/host-app/src/app/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -15,6 +16,7 @@ import { SharedModule } from 'projects/host-app/src/app/shared/shared.module';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
