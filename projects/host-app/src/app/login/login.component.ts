@@ -68,6 +68,16 @@ export class LoginComponent {
         this.cookieService.set('userInfo', JSON.stringify(userInfo));
     }
 
+    // Busca URL de redirecionamento de link compartilhando. Caso não exista, redireciona para página inicial
+    const redirectUrl = localStorage.getItem('redirectUrl') || '/';
+
+    if (redirectUrl) {
+        localStorage.removeItem('redirectUrl');
+        this.router.navigateByUrl(redirectUrl);
+        
+        return;
+    }
+
     // Redireciona para a página inicial
     this.router.navigateByUrl('home');
   }
