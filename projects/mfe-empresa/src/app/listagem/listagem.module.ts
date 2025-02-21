@@ -4,12 +4,14 @@ import { ListagemComponent } from './listagem.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'projects/host-app/src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginationComponent } from 'projects/mfe-parceiro/src/app/pagination/pagination.component';
 
 
 
-@NgModule({
+@NgModule({ 
   declarations: [
-    ListagemComponent
+    ListagemComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,

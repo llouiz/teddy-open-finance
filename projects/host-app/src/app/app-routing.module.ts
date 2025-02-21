@@ -5,9 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './auth.guard';
-
-const PARCEIROS_ENTRY = 'http://localhost:4300/remoteEntry.js';
-const EMPRESAS_ENTRY = 'http://localhost:4400/remoteEntry.js';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   {
@@ -26,7 +24,7 @@ const routes: Routes = [
     path: 'listagem-parceiros',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: PARCEIROS_ENTRY,
+        remoteEntry: environment.PARCEIROS_ENTRY,
         remoteName: 'mfeParceiro',
         exposedModule: './ListagemModule'
       })
@@ -39,7 +37,7 @@ const routes: Routes = [
     path: 'cadastro-parceiros',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: PARCEIROS_ENTRY,
+        remoteEntry: environment.PARCEIROS_ENTRY,
         remoteName: 'mfeParceiro',
         exposedModule: './CadastroModule'
       })
@@ -50,7 +48,7 @@ const routes: Routes = [
     path: 'listagem-empresas',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: EMPRESAS_ENTRY,
+        remoteEntry: environment.EMPRESAS_ENTRY,
         remoteName: 'mfeEmpresa',
         exposedModule: './ListagemModule'
       })
@@ -59,6 +57,17 @@ const routes: Routes = [
       ,
       canActivate: [ AuthGuard ]
   },
+  {
+    path: 'cadastro-empresas',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: environment.EMPRESAS_ENTRY,
+        remoteName: 'mfeEmpresa',
+        exposedModule: './CadastroModule'
+      })
+      .then((m) => m.CadastroModule).catch(err => console.log(err)
+      )
+  }
 ];
 
 @NgModule({

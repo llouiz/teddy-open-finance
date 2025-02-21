@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListagemModule } from './listagem/listagem.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     AppRoutingModule,
-    ListagemModule
+    ListagemModule,
+    CadastroModule
   ],
   providers: [],
   bootstrap: [AppComponent]

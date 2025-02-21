@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaginationService } from '../pagination.service';
 import { CookieService } from 'ngx-cookie-service';
-import { EmpresaService } from '../parceiro.service';
+import { EmpresaService } from '../empresa.service';
 
 @Component({
   selector: 'app-listagem',
@@ -17,7 +17,7 @@ export class ListagemComponent implements OnInit {
     username: ''
   };
 
-  displayedColumns: string[] = ['name', 'description', 'action'];
+  displayedColumns: string[] = ['name', 'description', 'collaboratorsCount', 'action'];
 
   empresas: any[] = [];
 
@@ -66,6 +66,7 @@ export class ListagemComponent implements OnInit {
       const editForm = (e: any) => new FormGroup({
         name: new FormControl(e.name,Validators.required),
         description: new FormControl(e.description,Validators.required),
+        collaboratorsCount: new FormControl(e.collaboratorsCount, Validators.required)
       });
       
       empresas.forEach((empresa: any) => {
@@ -121,7 +122,8 @@ export class ListagemComponent implements OnInit {
     const dataToBeUpdated = {
       id: empresa.id,
       name: empresa.validator.controls.name.value,
-      description: empresa.validator.controls.description.value
+      description: empresa.validator.controls.description.value,
+      collaboratorsCount: empresa.validator.controls.collaboratorsCount.value
     };
 
     this.empresaService.atualizar(dataToBeUpdated).subscribe((empresaAtualizado: any) => {

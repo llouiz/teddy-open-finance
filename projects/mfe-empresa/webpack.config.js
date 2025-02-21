@@ -33,6 +33,7 @@ module.exports = {
         filename: "remoteEntry.js",
         exposes: {
             './ListagemModule': './projects/mfe-empresa/src/app/listagem/listagem.module.ts',
+            './CadastroModule': './projects/mfe-empresa/src/app/cadastro/cadastro.module.ts',
         },        
         
         // For hosts (please adjust)
