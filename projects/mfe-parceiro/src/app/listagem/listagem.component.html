@@ -25,7 +25,7 @@
 <app-navbar></app-navbar>
 
 <div class="edit-users mat-elevation-z8" style="padding-top: 200px;">
-    <table mat-table [dataSource]="dataSource">
+    <table *ngIf="userInfo" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
         <td mat-cell *matCellDef="let element">
@@ -53,12 +53,11 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.editable ? 'editable' : 'readonly'"></tr>
     </table>
     
-    <mat-paginator 
-      [hidePageSize]="true"
-      [pageSize]="5"
-      showFirstLastButtons
-    >
-    </mat-paginator>
+    <div *ngIf="totalPages > 1" class="pagination-controls" style="background-color: #fff; padding: 15px;">
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
+        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage >= totalPages">Próximo</button>
+    </div>
   </div>
 
 <app-footer></app-footer>

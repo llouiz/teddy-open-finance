@@ -1,1 +1,10 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.pagination-controls button {
+    padding: 5px 10px;
+}
