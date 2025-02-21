@@ -1,0 +1,17 @@
+<style>
+    .pagination-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .pagination-controls button {
+        padding: 5px 10px;
+    }
+</style>
+
+<div class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage <= 1">Previous</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage >= totalPages">Next</button>
+</div>
+  

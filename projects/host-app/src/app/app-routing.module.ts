@@ -4,6 +4,7 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
+import { AuthGuard } from './auth.guard';
 
 const PARCEIROS_ENTRY = 'http://localhost:4300/remoteEntry.js';
 
@@ -30,6 +31,8 @@ const routes: Routes = [
       })
       .then((m) => m.ListagemModule).catch(err => console.log(err)
       )
+      ,
+      canActivate: [ AuthGuard ]
   }
 ];
 
