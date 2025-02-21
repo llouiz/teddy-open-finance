@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListagemComponent } from './listagem.component';
+import { CadastroComponent } from './cadastro.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from 'projects/host-app/src/app/shared/shared.module';
-import { PaginationComponent } from '../pagination/pagination.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
-    ListagemComponent,
-    PaginationComponent
+    CadastroComponent
   ],
   imports: [
     CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ListagemComponent
-      }
-    ])
+    RouterModule.forChild([{
+      path: '',
+      component: CadastroComponent
+    }])
   ]
 })
-export class ListagemModule { }
+export class CadastroModule { }

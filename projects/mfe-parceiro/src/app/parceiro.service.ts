@@ -11,6 +11,10 @@ export class ParceiroService {
 
   constructor(private httpClient: HttpClient) { }
 
+  cadastrar(parceiro: any): Observable<any> {
+    return this.httpClient.post<any>(API_URL, parceiro);
+  }
+
   buscaParceiros(): Observable<any[]> {
     return this.httpClient.get<any[]>(API_URL);
   }

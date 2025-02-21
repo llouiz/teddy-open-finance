@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListagemModule } from './listagem/listagem.module';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PaginationComponent } from './pagination/pagination.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ListagemModule
+    ListagemModule,
+    CadastroModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

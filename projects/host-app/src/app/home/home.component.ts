@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,7 +15,7 @@ export class HomeComponent {
   constructor(
     private router: Router,
     private cookieService: CookieService
-  ) {};
+  ) {}
 
   ngOnInit() {
     this.userInfo = this.getUserInfo();

@@ -69,7 +69,7 @@ export class LoginComponent {
     }
 
     // Busca URL de redirecionamento de link compartilhando. Caso não exista, redireciona para página inicial
-    const redirectUrl = localStorage.getItem('redirectUrl') || '/';
+    const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
 
     if (redirectUrl) {
         localStorage.removeItem('redirectUrl');
