@@ -241,9 +241,13 @@
 							"projects/mfe-empresa/src/assets"
 						],
 						"styles": [
-							"projects/mfe-empresa/src/styles.css"
+							"projects/mfe-empresa/src/styles.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+						],
 						"extraWebpackConfig": "projects/mfe-empresa/webpack.config.js",
 						"commonChunk": false
 					},
