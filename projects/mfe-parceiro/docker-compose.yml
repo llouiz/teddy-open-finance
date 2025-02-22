@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  mfe-parceiro:
+    build:
+      context: ../../
+      dockerfile: projects/mfe-parceiro/Dockerfile

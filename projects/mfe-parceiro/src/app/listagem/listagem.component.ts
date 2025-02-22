@@ -4,7 +4,7 @@ import  {MatPaginator } from '@angular/material/paginator';
 import { ParceiroService } from '../parceiro.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PaginationService } from '../pagination/pagination.service';
+import { PaginationService } from '../pagination.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({

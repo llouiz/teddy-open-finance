@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    PARCEIROS_ENTRY: 'https://prod.parceiros.com/remoteEntry.js',
-    EMPRESAS_ENTRY: 'https://prod.empresas.com/remoteEntry.js'
+    PARCEIROS_ENTRY: 'http://localhost:4300/remoteEntry.js',
+    EMPRESAS_ENTRY: 'http://localhost:4400/remoteEntry.js'
 };
