@@ -58,7 +58,7 @@ describe('CadastroComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should register', () => {
+  it('should register partner', () => {
     fixture = TestBed.createComponent(CadastroComponent);
     component = fixture.componentInstance;
 
@@ -67,7 +67,7 @@ describe('CadastroComponent', () => {
     // Simulando nosso usuário logado
     component.userInfo = { username: 'johndoe' };
 
-    component.cadastroForm.setValue({ name: 'Empresa LTDA', description: 'Uma descrição' });
+    component.cadastroForm.setValue({ name: 'Isaac Millan', description: 'Uma descrição' });
 
     spyOn(component, 'onSubmit');
 
