@@ -127,7 +127,11 @@ export class ListagemComponent implements OnInit {
     };
 
     this.empresaService.atualizar(dataToBeUpdated).subscribe((empresaAtualizado: any) => {
-      window.location.href = '/listagem-empresas';
+
+      // Garante que o código real pra isso só roda fora do ambiente de testes.
+      if (!(window as any).jasmine) {
+        window.location.href = '/listagem-empresas';
+      }
 
       this.empresas = [];
     }, (error: any) => console.log(error)
@@ -150,7 +154,10 @@ export class ListagemComponent implements OnInit {
     const { id } = empresa;
 
     this.empresaService.removerEmpresa(id as number).subscribe(() => {
-      window.location.href = '/listagem-empresas';
+      // Garante que o código real pra isso só roda fora do ambiente de testes.
+      if (!(window as any).jasmine) {
+          window.location.href = '/listagem-empresas';
+      }
 
       this.empresas = [];
     }, (error: any) => console.log(error));

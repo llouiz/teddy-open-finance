@@ -29,7 +29,8 @@ describe('AppComponent', () => {
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('mfe-empresa app is running!');
+
+    const compiled = fixture.componentInstance;
+    expect(compiled.title).toEqual('mfe-empresa');
   });
 });

@@ -1,17 +1,17 @@
-export const PARCEIROS: any = {
+export const EMPRESAS: any = {
     1: {
         id: 1,
-        name: "Thomas Robert",
+        name: "Facebook",
         description: 'Descrição 1',
     },
     2: {
         id: 2,
-        name: "Michael William",
+        name: "Instagram",
         description: 'Descrição 2',
     },
     3: {
         id: 3,
-        name: "Joseph Christopher",
+        name: "Github",
         description: 'Descrição 3',
     }
 };
