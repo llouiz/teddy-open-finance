@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListagemComponent } from './listagem.component';
+import { FooterComponent } from 'projects/host-app/src/app/footer/footer.component';
+import { NavbarComponent } from 'projects/host-app/src/app/navbar/navbar.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ListagemComponent', () => {
   let component: ListagemComponent;
@@ -8,7 +12,12 @@ describe('ListagemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListagemComponent ]
+      declarations: [
+        ListagemComponent,
+        NavbarComponent,
+        FooterComponent
+      ],
+      imports: [ RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();
 
