@@ -126,7 +126,7 @@ export class ListagemComponent implements OnInit {
       collaboratorsCount: empresa.validator.controls.collaboratorsCount.value
     };
 
-    this.empresaService.atualizar(dataToBeUpdated).subscribe((empresaAtualizado: any) => {
+    this.empresaService.atualizar(empresa.id, dataToBeUpdated).subscribe((empresaAtualizado: any) => {
 
       // Garante que o código real pra isso só roda fora do ambiente de testes.
       if (!(window as any).jasmine) {
