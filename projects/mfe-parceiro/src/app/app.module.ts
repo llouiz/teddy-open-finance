@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListagemModule } from './listagem/listagem.module';
 import { CadastroModule } from './cadastro/cadastro.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { CadastroModule } from './cadastro/cadastro.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ListagemModule,
     CadastroModule 
   ],
