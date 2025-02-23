@@ -19,13 +19,15 @@ export class EmpresaService {
     return this.httpClient.get<any[]>(API_URL);
   }
 
+  buscaEmpresaPorId(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${API_URL}/${id}`);
+  }
+
   removerEmpresa(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${API_URL}/${id}`);
   }
 
-  atualizar( empresa: any): Observable<any> {
-    const { id } = empresa;
-
+  atualizar(id: number, empresa: any): Observable<any> {
     return this.httpClient.put<any>(`${API_URL}/${id}`, empresa);
   }
 }
