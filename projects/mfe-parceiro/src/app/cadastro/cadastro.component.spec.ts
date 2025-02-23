@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ParceiroService } from '../parceiro.service';
 import { PARCEIROS } from '../../mock-data/parceiro';
 
+const API_URL = 'https://644060ba792fe886a88de1b9.mockapi.io/v1/test/partners';
+
 describe('CadastroComponent', () => {
   let component: CadastroComponent;
   let fixture: ComponentFixture<CadastroComponent>;
@@ -89,12 +91,9 @@ describe('CadastroComponent', () => {
       }, err => console.log(err)
     );
 
-    const mockReq = testingController.expectOne('https://644060ba792fe886a88de1b9.mockapi.io/v1/test/partners');
+    const mockReq = testingController.expectOne(API_URL);
     expect(mockReq.request.method).toEqual('POST');
 
     mockReq.flush(parceiro);
-
-    console.log(PARCEIROS);
   });
-
 });

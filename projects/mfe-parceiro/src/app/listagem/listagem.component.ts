@@ -67,7 +67,6 @@ export class ListagemComponent implements OnInit {
         name: new FormControl(e.name,Validators.required),
         description: new FormControl(e.description,Validators.required),
       });
-      console.log('parceiros', parceiros);
       
       parceiros.forEach(parceiro => {
         this.parceiros.push({...parceiro, editable: false, validator: editForm(parceiro)})
@@ -125,7 +124,7 @@ export class ListagemComponent implements OnInit {
       description: parceiro.validator.controls.description.value
     };
 
-    this.parceiroService.atualizar(dataToBeUpdated).subscribe((parceiroAtualizado) => {
+    this.parceiroService.atualizar(parceiro.id, dataToBeUpdated).subscribe((parceiroAtualizado) => {
 
       // Garante que o código real pra isso só roda fora do ambiente de testes.
       if (!(window as any).jasmine) {
