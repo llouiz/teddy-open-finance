@@ -19,13 +19,15 @@ export class ParceiroService {
     return this.httpClient.get<any[]>(API_URL);
   }
 
+  buscaParceiroPorId(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${API_URL}/${id}`);
+  }
+
   removerParceiro(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${API_URL}/${id}`);
   }
 
-  atualizar( parceiro: any): Observable<any> {
-    const { id } = parceiro;
-
+  atualizar(id: number, parceiro: any): Observable<any> {
     return this.httpClient.put<any>(`${API_URL}/${id}`, parceiro);
   }
 }
