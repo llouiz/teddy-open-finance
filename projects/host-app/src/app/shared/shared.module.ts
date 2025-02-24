@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   exports: [
     HttpClientModule,
+    RouterModule,
     NavbarComponent,
     FooterComponent,
     MatTableModule,
@@ -33,6 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,

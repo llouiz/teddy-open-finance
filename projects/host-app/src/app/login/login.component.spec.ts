@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -29,6 +31,8 @@ describe('LoginComponent', () => {
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        RouterModule,
+        RouterTestingModule,
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,

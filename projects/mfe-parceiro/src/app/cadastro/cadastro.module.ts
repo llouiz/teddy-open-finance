@@ -15,9 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild([{

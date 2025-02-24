@@ -31,10 +31,6 @@ export class NavbarComponent {
       return userInfo ? JSON.parse(userInfo) : null;
     }
 
-    goToPage(path: string) {
-      window.location.href = path;
-    }
-
     logout() {
       localStorage.removeItem('userInfo');
 

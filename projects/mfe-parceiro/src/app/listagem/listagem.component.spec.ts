@@ -43,7 +43,7 @@ describe('ListagemComponent', () => {
       expect(parceiros).toBeTruthy();
 
       const segundoParceiro = parceiros.find((user: any) => user.id === 2);
-      expect(segundoParceiro.name).toBe('Instagram');
+      expect(segundoParceiro.name).toBe('Michael William');
     });
 
     // Verifica todas as requisições feitas
@@ -62,7 +62,7 @@ describe('ListagemComponent', () => {
 
     parceiroService.buscaParceiroPorId(1).subscribe((parceiro: any) => {
       expect(parceiro).toBeTruthy();
-      expect(parceiro.name).toBe('Facebook');
+      expect(parceiro.name).toBe('Thomas Robert');
     });
 
     const mockReq = testingController.expectOne(`${API_URL}/${idDoParceiroASerAtualizado}`);

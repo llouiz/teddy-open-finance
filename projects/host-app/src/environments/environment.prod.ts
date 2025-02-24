@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    PARCEIROS_ENTRY: 'http://localhost:4300/remoteEntry.js',
-    EMPRESAS_ENTRY: 'http://localhost:4400/remoteEntry.js'
+    PARCEIROS_ENTRY: 'https://llouiz.github.io/teddy-open-finance/mfe-parceiro/remoteEntry.js',
+    EMPRESAS_ENTRY: 'https://llouiz.github.io/teddy-open-finance/mfe-empresa/remoteEntry.js'
 };

@@ -29,10 +29,8 @@ export class CadastroComponent implements OnInit {
     this.userInfo = this.getUserInfo();
 
     if (!this.userInfo) {
-  
-       if (!(window as any).jasmine) {
-          window.location.href = '/';
-       }
+
+        this.router.navigateByUrl('/');
     }
   }
 
@@ -80,9 +78,8 @@ export class CadastroComponent implements OnInit {
     };
 
     this.parceiroService.cadastrar(parceiro).subscribe((parceiro) => {
-      if (!(window as any).jasmine) {
-          window.location.href = '/listagem-parceiros';
-      }
+
+      this.router.navigateByUrl('/listagem-parceiros');
       
     }, err => console.log(err)
     )

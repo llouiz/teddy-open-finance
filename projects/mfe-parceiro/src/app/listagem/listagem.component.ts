@@ -126,10 +126,7 @@ export class ListagemComponent implements OnInit {
 
     this.parceiroService.atualizar(parceiro.id, dataToBeUpdated).subscribe((parceiroAtualizado) => {
 
-      // Garante que o código real pra isso só roda fora do ambiente de testes.
-      if (!(window as any).jasmine) {
-        window.location.href = '/listagem-parceiros';
-      }
+      this.router.navigateByUrl('/listagem-parceiros');
 
       this.parceiros = [];
     }, error => console.log(error)
@@ -153,10 +150,7 @@ export class ListagemComponent implements OnInit {
 
     this.parceiroService.removerParceiro(id as number).subscribe(() => {
 
-      // Garante que o código real pra isso só roda fora do ambiente de testes.
-      if (!(window as any).jasmine) {
-          window.location.href = '/listagem-parceiros';
-      }
+      this.router.navigateByUrl('/listagem-parceiros');
 
       this.parceiros = [];
     }, error => console.log(error));

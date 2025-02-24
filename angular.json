@@ -49,6 +49,12 @@
 									"maximumError": "4kb"
 								}
 							],
+							"fileReplacements": [
+								{
+									"replace": "projects/host-app/src/environments/environment.ts",
+									"with": "projects/host-app/src/environments/environment.prod.ts"
+								}
+							],
 							"outputHashing": "all",
 							"extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
 						},

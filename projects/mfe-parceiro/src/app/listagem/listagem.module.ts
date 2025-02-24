@@ -12,6 +12,7 @@ import { SharedModule } from 'projects/host-app/src/app/shared/shared.module';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild([

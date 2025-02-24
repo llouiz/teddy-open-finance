@@ -39,32 +39,8 @@
 
 </style>
 
-<!-- <div class="header-container">
-    <h1 style="color: rgb(235, 143, 23);" (click)="goHome()">
-        <span style="cursor: pointer;">Teddy Open Finance</span>
-    </h1>
-
-    <div *ngIf="userInfo" class="menu">
-        <button mat-button [matMenuTriggerFor]="aboveMenu">Parceiros</button>
-        <mat-menu #aboveMenu="matMenu" yPosition="above">
-            <button mat-menu-item routerLink="cadastro-parceiros">Cadastrar parceiro</button>
-            <button mat-menu-item routerLink="/listagem-parceiros">Listar todos os parceiros</button>
-        </mat-menu>
-    
-        <button mat-button [matMenuTriggerFor]="belowMenu">Empresa Externa</button>
-        <mat-menu #belowMenu="matMenu" yPosition="below">
-            <button mat-menu-item>Cadastrar empresa externa</button>
-            <button mat-menu-item>Listar as empresa externas</button>
-        </mat-menu>
-    
-        <button mat-button (click)="aboutApp()">Sobre a aplicação</button>
-    
-        <button mat-button (click)="logout()">Sair</button>
-    </div>
-</div> -->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand active" (click)="goToPage('/home')" style="margin: 10px; color: rgb(235, 143, 23);">Teddy Open Finance</a>
+    <a class="navbar-brand active" [routerLink]="['/home']" style="margin: 10px; color: rgb(235, 143, 23);">Teddy Open Finance</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -76,8 +52,8 @@
             Parceiros
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="goToPage('/cadastro-parceiros')">Cadastrar parceiro</a>
-            <a class="dropdown-item" (click)="goToPage('/listagem-parceiros')">Listar todos os parceiros</a>
+            <a class="dropdown-item" [routerLink]="['/cadastro-parceiros']">Cadastrar parceiro</a>
+            <a class="dropdown-item" [routerLink]="['/listagem-parceiros']">Listar todos os parceiros</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -85,12 +61,12 @@
             Empresa Externa
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="goToPage('/cadastro-empresas')">Cadastrar empresa externa</a>
-            <a class="dropdown-item" (click)="goToPage('/listagem-empresas')">Listar as empresa externas</a>
+            <a class="dropdown-item" [routerLink]="['/cadastro-empresas']">Cadastrar empresa externa</a>
+            <a class="dropdown-item" [routerLink]="['/listagem-empresas']">Listar as empresa externas</a>
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="goToPage('/about')">Sobre a aplicação</a>
+            <a class="nav-link" [routerLink]="['/about']">Sobre a aplicação</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" (click)="logout()">Sair</a>

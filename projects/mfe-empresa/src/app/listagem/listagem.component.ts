@@ -128,10 +128,7 @@ export class ListagemComponent implements OnInit {
 
     this.empresaService.atualizar(empresa.id, dataToBeUpdated).subscribe((empresaAtualizado: any) => {
 
-      // Garante que o código real pra isso só roda fora do ambiente de testes.
-      if (!(window as any).jasmine) {
-        window.location.href = '/listagem-empresas';
-      }
+      this.router.navigateByUrl('/listagem-empresas');
 
       this.empresas = [];
     }, (error: any) => console.log(error)
@@ -154,10 +151,8 @@ export class ListagemComponent implements OnInit {
     const { id } = empresa;
 
     this.empresaService.removerEmpresa(id as number).subscribe(() => {
-      // Garante que o código real pra isso só roda fora do ambiente de testes.
-      if (!(window as any).jasmine) {
-          window.location.href = '/listagem-empresas';
-      }
+
+      this.router.navigateByUrl('/listagem-empresas');
 
       this.empresas = [];
     }, (error: any) => console.log(error));

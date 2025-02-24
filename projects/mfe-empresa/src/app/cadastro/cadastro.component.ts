@@ -22,6 +22,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private empresaService: EmpresaService,
+    private router: Router,
     private cookieService: CookieService
   ) {}
 
@@ -30,9 +31,7 @@ export class CadastroComponent implements OnInit {
 
     if (!this.userInfo) {
   
-      if (!(window as any).jasmine) {
-          window.location.href = '/';
-      }
+      this.router.navigateByUrl('/');
     }
   }
 
@@ -81,9 +80,7 @@ export class CadastroComponent implements OnInit {
     };
 
     this.empresaService.cadastrar(empresa).subscribe((empresa: any) => {
-      if (!(window as any).jasmine) {
-          window.location.href = '/listagem-empresas';
-      }
+      this.router.navigateByUrl('/listagem-empresas');
       
     }, (err: any) => console.log(err)
     )
