@@ -10,11 +10,21 @@
 - Uso de componentes com [Angular Material](https://material.angular.io/)
 - Uso de componentes com o [Bootstrap](https://getbootstrap.com/)
 
+## Demo
+
+[Aqui](https://llouiz.github.io/teddy-open-finance) você pode encontrar uma demonstração em produção com a build do App que se encontra hospedada no GitHub Pages.
+
 ### Instalar dependências
 
 ```
 npm install
 ```
+
+### Implementação de Módulos
+
+- Para implementação de módulos, é preciso configurar dentro da pasta de cada projeto
+- Pra cada projeto, temos o arquivo ``webpack.config.js``
+- Nele, podemos expor/fazer chamada para outros tipos de módulos tanto remoto quanto hosts
 
 ### Variáveis de Ambiente
 ```
@@ -73,13 +83,59 @@ Ex: ng test mfe-parceiro
 
 ## Deploy no GitHub Pages
 
+
+
 ```
-Parei aqui
+ng build host-app --configuration production --base-href /NOME_DO_REPOSITORIO/host-app/
+
+ng build mfe-parceiro --configuration production --base-href /NOME_DO_REPOSITORIO/mfe-parceiro/
+
+ng build mfe-empresa --configuration production --base-href /NOME_DO_REPOSITORIO/mfe-empresa/
+
+Crie uma pasta com nome `deploy` na raiz e copie a pasta com cada build do projeto dentro de `dist` para lá.
+
+Ficando com a seguinte estrutura:
+
+deploy/
+ ├── host-app/
+ │    ├── index.html
+ │    ├── assets/
+ │    └── ...
+ ├── mfe-parceiro/
+ │    ├── index.html
+ │    ├── assets/
+ │    └── ...
+ ├── mfe-empresa/
+ │    ├── index.html
+ │    ├── assets/
+ │    └── ...
+
+Por último, faça o deploy no GitHub Pages:
+
+npx angular-cli-ghpages --dir=deploy
+
+Uma nova branch será criada automaticamente com sua pasta de deploy
 ```
 
 ## Lista de Funcionalidades da Aplicação
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Página de Login
+- Logout
+- Armazenamento de informações via ``localStorage``ou ``cookie``
+- Parceiros
+    - Cadastro de Parceiros
+    - Listagem de Parceiros
+    - Edição de Parceiros
+    - Remoção de Parceiros
+- Empresas
+    - Cadastro de Empresas
+    - Listagem de Empresas
+    - Edição de Empresas
+    - Remoção de Empresas
+- Mecanismo de redirecionamento de acordo com o mapeamento de páginação (Logado ou Após Login)
+- Integração com a API para persistir o CRUD
+- Execução da aplicação em container
+- Implementação de Testes Unitário
+- Deploy via GitHub Pages
 
 ## Autor
 
