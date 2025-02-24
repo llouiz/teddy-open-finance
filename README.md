@@ -1,4 +1,4 @@
-# Sistema desenvolvido com foco no cadastro de Parceiros e Empresas Externa.
+# Sistema de Cadastro de Parceiros e Empresas Externa.
 
 - Projeto desenvolvido com [Angular](https://angular.dev/) na versão 15.
 - Aplicação dividida em partes com a implementação de Micro-Front-ends.
