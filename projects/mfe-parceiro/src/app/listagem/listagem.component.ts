@@ -67,6 +67,9 @@ export class ListagemComponent implements OnInit {
         name: new FormControl(e.name,Validators.required),
         description: new FormControl(e.description,Validators.required),
       });
+
+      // Zero a lista desatualizada de parceiros
+      this.parceiros = [];
       
       parceiros.forEach(parceiro => {
         this.parceiros.push({...parceiro, editable: false, validator: editForm(parceiro)})
@@ -149,10 +152,10 @@ export class ListagemComponent implements OnInit {
     const { id } = parceiro;
 
     this.parceiroService.removerParceiro(id as number).subscribe(() => {
-
+      
       this.router.navigateByUrl('/listagem-parceiros');
 
-      this.parceiros = [];
+      this.buscaParceiros();
     }, error => console.log(error));
   }
 }

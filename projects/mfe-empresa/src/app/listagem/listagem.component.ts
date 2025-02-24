@@ -68,6 +68,8 @@ export class ListagemComponent implements OnInit {
         description: new FormControl(e.description,Validators.required),
         collaboratorsCount: new FormControl(e.collaboratorsCount, Validators.required)
       });
+
+      this.empresas = [];
       
       empresas.forEach((empresa: any) => {
         this.empresas.push({...empresa, editable: false, validator: editForm(empresa)})
@@ -154,7 +156,8 @@ export class ListagemComponent implements OnInit {
 
       this.router.navigateByUrl('/listagem-empresas');
 
-      this.empresas = [];
+      // Busca lista atualizada
+      this.buscaEmpresas();
     }, (error: any) => console.log(error));
   }
 }
