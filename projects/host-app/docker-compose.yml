@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   host-app:
+    image: host-app
     build:
       context: ../../
       dockerfile: projects/host-app/Dockerfile

@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   mfe-empresa:
+    image: mfe-empresa
     build:
       context: ../../
       dockerfile: projects/mfe-empresa/Dockerfile
