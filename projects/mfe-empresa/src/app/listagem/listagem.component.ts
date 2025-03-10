@@ -84,6 +84,13 @@ export class ListagemComponent implements OnInit {
         this.currentPage = Math.min(Math.max(page, 1), this.totalPages);
 
         this.updatePagination();
+
+        if (page !== this.currentPage) {
+            this.router.navigate([], {
+              queryParams: { page: this.currentPage },
+              queryParamsHandling: 'merge'
+            });
+        }
       });
 
       this.dataSource = new MatTableDataSource(this.empresas);
@@ -101,10 +108,9 @@ export class ListagemComponent implements OnInit {
       this.updatePagination();
     }
 
-    // Update URL with new page query param
     this.router.navigate([], {
       queryParams: { page: this.currentPage },
-      queryParamsHandling: 'merge' // Keeps existing query parameters while updating 'page'
+      queryParamsHandling: 'merge'
     });
   }
 
@@ -130,7 +136,7 @@ export class ListagemComponent implements OnInit {
 
     this.empresaService.atualizar(empresa.id, dataToBeUpdated).subscribe((empresaAtualizado: any) => {
 
-      this.router.navigateByUrl('/listagem-empresas');
+      this.buscaEmpresas();
 
       this.empresas = [];
     }, (error: any) => console.log(error)
@@ -153,9 +159,6 @@ export class ListagemComponent implements OnInit {
     const { id } = empresa;
 
     this.empresaService.removerEmpresa(id as number).subscribe(() => {
-
-      this.router.navigateByUrl('/listagem-empresas');
-
       // Busca lista atualizada
       this.buscaEmpresas();
     }, (error: any) => console.log(error));
