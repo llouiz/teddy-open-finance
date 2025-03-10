@@ -84,6 +84,13 @@ export class ListagemComponent implements OnInit {
         this.currentPage = Math.min(Math.max(page, 1), this.totalPages);
 
         this.updatePagination();
+
+        if (page !== this.currentPage) {
+            this.router.navigate([], {
+              queryParams: { page: this.currentPage },
+              queryParamsHandling: 'merge'
+            });
+        }
       });
 
       this.dataSource = new MatTableDataSource(this.parceiros);
@@ -129,7 +136,7 @@ export class ListagemComponent implements OnInit {
 
     this.parceiroService.atualizar(parceiro.id, dataToBeUpdated).subscribe((parceiroAtualizado) => {
 
-      this.router.navigateByUrl('/listagem-parceiros');
+      this.buscaParceiros();
 
       this.parceiros = [];
     }, error => console.log(error)
@@ -152,9 +159,7 @@ export class ListagemComponent implements OnInit {
     const { id } = parceiro;
 
     this.parceiroService.removerParceiro(id as number).subscribe(() => {
-      
-      this.router.navigateByUrl('/listagem-parceiros');
-
+    
       this.buscaParceiros();
     }, error => console.log(error));
   }
