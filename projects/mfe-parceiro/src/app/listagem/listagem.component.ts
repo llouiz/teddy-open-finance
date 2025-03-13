@@ -108,10 +108,9 @@ export class ListagemComponent implements OnInit {
       this.updatePagination();
     }
 
-    // Update URL with new page query param
     this.router.navigate([], {
       queryParams: { page: this.currentPage },
-      queryParamsHandling: 'merge' // Keeps existing query parameters while updating 'page'
+      queryParamsHandling: 'merge'
     });
   }
 

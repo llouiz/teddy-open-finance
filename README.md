@@ -5,7 +5,8 @@
 - Para o uso de Micro-Front-ends é utilizado o [Module Federation](https://module-federation.io/)
 - Implementação e uso com [Docker](https://www.docker.com/)
 - Uso de configurações de servidor com [Nginx](https://nginx.org/)
-- Implementação de Testes Unitário via [Karma](https://karma-runner.github.io). 
+- Implementação de Testes Unitário/Integração via [Karma](https://karma-runner.github.io).
+- Implementação de Testes Automatizado via [cypress](https://www.cypress.io).
 - Implementação com [GitHub Pages](https://pages.github.com/)
 - Uso de componentes com [Angular Material](https://material.angular.io/)
 - Uso de componentes com o [Bootstrap](https://getbootstrap.com/)
@@ -73,7 +74,7 @@ Pasta dist será gerada com o nome do projeto
 Ex: dist/mfe-parceiro
 ```
 
-## Testes Unitário
+## Testes Unitário/Integração
 
 ```
 ng test <nome_do_projeto>
@@ -81,8 +82,15 @@ ng test <nome_do_projeto>
 Ex: ng test mfe-parceiro
 ```
 
-## Deploy no GitHub Pages
+## Testes Automatizado
 
+```
+Rodar testes e2e via aplicação no Browser -> npm run cypress:open
+
+Rodar testes e2e via terminal -> npm run cypress:run
+```
+
+## Deploy no GitHub Pages
 
 
 ```

@@ -31,6 +31,15 @@
         background-color: #eb8b1e;
         border: none;
     }
+
+    .btn-disabled {
+        padding: 10px;
+        width: 150px;
+        border-radius: 20px;
+        color: #fff;
+        background-color: #e7c7a3;
+        border: none;
+    }
 </style>
 
 <app-navbar></app-navbar>
@@ -52,7 +61,7 @@
             <mat-label>Número de Colaboradores</mat-label>
             <input type="text" matInput autocomplete="on" formControlName="collaboratorsCount">
         </mat-form-field>
-        <button class="submit-btn" [disabled]="cadastroForm.invalid" mat-flat-button color="primary" type="submit">Cadastrar</button>
+        <button [ngClass]="cadastroForm.invalid ? 'btn-disabled' : 'submit-btn'" [disabled]="cadastroForm.invalid" mat-flat-button color="primary" type="submit">Cadastrar</button>
     </form>
 </div>
 
