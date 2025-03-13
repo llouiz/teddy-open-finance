@@ -61,7 +61,7 @@
             <mat-label>Número de Colaboradores</mat-label>
             <input type="text" matInput autocomplete="on" formControlName="collaboratorsCount">
         </mat-form-field>
-        <button [ngClass]="cadastroForm.invalid ? 'btn-disabled' : 'submit-btn'" [disabled]="cadastroForm.invalid" mat-flat-button color="primary" type="submit">Cadastrar</button>
+        <button id="btn-register" [ngClass]="cadastroForm.invalid ? 'btn-disabled' : 'submit-btn'" [disabled]="cadastroForm.invalid" mat-flat-button color="primary" type="submit">Cadastrar</button>
     </form>
 </div>
 
