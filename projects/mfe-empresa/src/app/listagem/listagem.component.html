@@ -50,7 +50,7 @@
           <th mat-header-cell *matHeaderCellDef>Ação</th>
           <td mat-cell *matCellDef="let element; let i = index">
             <mat-icon *ngIf="!element.editable" class="editIcon" color="primary" style="margin-right: 20px;" (click)="editar(element)">edit</mat-icon>
-            <mat-icon style="cursor: pointer; margin-right: 20px;" *ngIf="element.editable" (click)="confirmarEdicao(element)">check</mat-icon>
+            <mat-icon class="checkIcon" style="cursor: pointer; margin-right: 20px;" *ngIf="element.editable" (click)="confirmarEdicao(element)">check</mat-icon>
             <mat-icon class="removeIcon" color="warn" (click)="cancelarDeletar(element, i)">{{ element.editable ? 'close' : 'delete' }}</mat-icon>
           </td>
         </ng-container>
