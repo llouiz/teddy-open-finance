@@ -142,7 +142,8 @@ Uma nova branch será criada automaticamente com sua pasta de deploy
 - Mecanismo de redirecionamento de acordo com o mapeamento de páginação (Logado ou Após Login)
 - Integração com a API para persistir o CRUD
 - Execução da aplicação em container
-- Implementação de Testes Unitário
+- Implementação de Testes Unitário/Integração
+- Implementação de Testes Automatizado
 - Deploy via GitHub Pages
 
 ## Autor
