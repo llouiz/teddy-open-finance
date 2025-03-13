@@ -43,7 +43,7 @@
         <div style="margin-bottom: 10px;">
             <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="check($event.checked)">Lembrar-me</mat-checkbox>
         </div>
-        <button [disabled]="loginForm.invalid" mat-flat-button color="primary" type="submit">Login</button>
+        <button class="btn-login" [disabled]="loginForm.invalid" mat-flat-button color="primary" type="submit">Login</button>
     </form>
 </div>
 

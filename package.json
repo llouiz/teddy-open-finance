@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -33,7 +36,9 @@
     "@angular-devkit/build-angular": "^15.2.11",
     "@angular/cli": "~15.2.11",
     "@angular/compiler-cli": "^15.2.0",
+    "@cypress/schematic": "^2.5.2",
     "@types/jasmine": "~4.3.0",
+    "cypress": "latest",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
