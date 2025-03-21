@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ParceiroService } from '../parceiro.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import Parceiro from '../parceiro.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -45,10 +46,10 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit() {
-    const parceiro = {
+    const parceiro: Parceiro = {
         createdAt: new Date().toISOString(),
-        name: this.cadastroForm.value.name,
-        description: this.cadastroForm.value.description,
+        name: this.cadastroForm.value.name || '',
+        description: this.cadastroForm.value.description || '',
         repositoryGit: "https://github.com/example",
         urlDoc: "https://example.com",
         clients: [

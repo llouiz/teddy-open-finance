@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { EmpresaService } from '../empresa.service';
+import Empresa from '../empresa.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -46,11 +47,11 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit() {
-    const empresa = {
+    const empresa: Empresa = { 
         createdAt: new Date().toISOString(),
-        collaboratorsCount: this.cadastroForm.value.collaboratorsCount,
-        name: this.cadastroForm.value.name,
-        description: this.cadastroForm.value.description,
+        collaboratorsCount: Number(this.cadastroForm.value.collaboratorsCount),
+        name: this.cadastroForm.value.name || '',
+        description: this.cadastroForm.value.description || '',
         repositoryGit: "https://github.com/example",
         urlDoc: "https://example.com",
         clients: [
@@ -79,7 +80,7 @@ export class CadastroComponent implements OnInit {
         ]
     };
 
-    this.empresaService.cadastrar(empresa).subscribe((empresa: any) => {
+    this.empresaService.cadastrar(empresa).subscribe((empresa) => {
       this.router.navigateByUrl('/listagem-empresas');
       
     }, (err: any) => console.log(err)

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import Empresa from './empresa.model';
 
 const API_URL = 'https://655cf25525b76d9884fe3153.mockapi.io/v1/external-companies';
 
@@ -11,23 +12,23 @@ export class EmpresaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  cadastrar(empresa: any): Observable<any> {
-    return this.httpClient.post<any>(API_URL, empresa);
+  cadastrar(empresa: Empresa): Observable<Empresa> {
+    return this.httpClient.post<Empresa>(API_URL, empresa);
   }
 
-  buscaEmpresas(): Observable<any[]> {
-    return this.httpClient.get<any[]>(API_URL);
+  buscaEmpresas(): Observable<Empresa[]> {
+    return this.httpClient.get<Empresa[]>(API_URL);
   }
 
-  buscaEmpresaPorId(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${API_URL}/${id}`);
+  buscaEmpresaPorId(id: number): Observable<Empresa> {
+    return this.httpClient.get<Empresa>(`${API_URL}/${id}`);
   }
 
-  removerEmpresa(id: number): Observable<any> {
-    return this.httpClient.delete<any>(`${API_URL}/${id}`);
+  removerEmpresa(id: number): Observable<Empresa> {
+    return this.httpClient.delete<Empresa>(`${API_URL}/${id}`);
   }
 
-  atualizar(id: number, empresa: any): Observable<any> {
-    return this.httpClient.put<any>(`${API_URL}/${id}`, empresa);
+  atualizar(id: number, empresa: Empresa): Observable<Empresa> {
+    return this.httpClient.put<Empresa>(`${API_URL}/${id}`, empresa);
   }
 }

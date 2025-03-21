@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaginationService } from '../pagination.service';
 import { CookieService } from 'ngx-cookie-service';
+import Parceiro from '../parceiro.model';
 
 @Component({
   selector: 'app-listagem',
@@ -13,13 +14,13 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./listagem.component.css']
 })
 export class ListagemComponent implements OnInit {
-  userInfo = {
+  userInfo: any = {
     username: ''
   };
 
   displayedColumns: string[] = ['name', 'description', 'action'];
 
-  parceiros: any[] = [];
+  parceiros: Parceiro[] = [];
 
   dataSource = new MatTableDataSource(this.parceiros);
 
@@ -120,11 +121,11 @@ export class ListagemComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.parceiros);
   }
 
-  editar(parceiro: any) {
+  editar(parceiro: Parceiro) {
     parceiro.editable = true;
   }
 
-  confirmarEdicao(parceiro: any) {
+  confirmarEdicao(parceiro: Parceiro) {
     parceiro.editable = false;
 
     const dataToBeUpdated = {
@@ -133,7 +134,7 @@ export class ListagemComponent implements OnInit {
       description: parceiro.validator.controls.description.value
     };
 
-    this.parceiroService.atualizar(parceiro.id, dataToBeUpdated).subscribe((parceiroAtualizado) => {
+    this.parceiroService.atualizar(parceiro.id as number, dataToBeUpdated).subscribe((parceiroAtualizado) => {
 
       this.buscaParceiros();
 
@@ -142,19 +143,19 @@ export class ListagemComponent implements OnInit {
     );
   }
 
-  cancelarDeletar(parceiro: any, i: number) {
+  cancelarDeletar(parceiro: Parceiro, i: number) {
     if (parceiro.editable) {
-      parceiro.editable = false;
-      // Reseta formulário
-      Object.keys(parceiro.validator.controls).forEach(item => {
-        parceiro.validator.controls[item].patchValue(parceiro[item]);
-      });
+        parceiro.editable = false;
+        // Reseta formulário
+        Object.keys(parceiro.validator.controls).forEach(item => {
+          parceiro.validator.controls[item].patchValue(parceiro[item]);
+        });
     } else {
       this.remove(parceiro);
     }
   }
 
-  remove(parceiro: any) {
+  remove(parceiro: Parceiro) {
     const { id } = parceiro;
 
     this.parceiroService.removerParceiro(id as number).subscribe(() => {

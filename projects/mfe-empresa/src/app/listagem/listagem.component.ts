@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaginationService } from '../pagination.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EmpresaService } from '../empresa.service';
+import Empresa from '../empresa.model';
 
 @Component({
   selector: 'app-listagem',
@@ -19,7 +20,7 @@ export class ListagemComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'description', 'collaboratorsCount', 'action'];
 
-  empresas: any[] = [];
+  empresas: Empresa[] = [];
 
   dataSource = new MatTableDataSource(this.empresas);
 
@@ -61,7 +62,7 @@ export class ListagemComponent implements OnInit {
   }
 
   buscaEmpresas() {
-    this.empresaService.buscaEmpresas().subscribe((empresas: any) =>
+    this.empresaService.buscaEmpresas().subscribe((empresas) =>
     {
       const editForm = (e: any) => new FormGroup({
         name: new FormControl(e.name,Validators.required),
@@ -71,7 +72,7 @@ export class ListagemComponent implements OnInit {
 
       this.empresas = [];
       
-      empresas.forEach((empresa: any) => {
+      empresas.forEach((empresa: Empresa) => {
         this.empresas.push({...empresa, editable: false, validator: editForm(empresa)})
       });
 
@@ -120,11 +121,11 @@ export class ListagemComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.empresas);
   }
 
-  editar(empresa: any) {
+  editar(empresa: Empresa) {
     empresa.editable = true;
   }
 
-  confirmarEdicao(empresa: any) {
+  confirmarEdicao(empresa: Empresa) {
     empresa.editable = false;
 
     const dataToBeUpdated = {
@@ -134,7 +135,7 @@ export class ListagemComponent implements OnInit {
       collaboratorsCount: empresa.validator.controls.collaboratorsCount.value
     };
 
-    this.empresaService.atualizar(empresa.id, dataToBeUpdated).subscribe((empresaAtualizado: any) => {
+    this.empresaService.atualizar(Number(empresa.id), dataToBeUpdated).subscribe((empresaAtualizado) => {
 
       this.buscaEmpresas();
 
@@ -143,7 +144,7 @@ export class ListagemComponent implements OnInit {
     );
   }
 
-  cancelarDeletar(empresa: any, i: number) {
+  cancelarDeletar(empresa: Empresa, i: number) {
     if (empresa.editable) {
       empresa.editable = false;
       // Reseta formulário
@@ -155,7 +156,7 @@ export class ListagemComponent implements OnInit {
     }
   }
 
-  remove(empresa: any) {
+  remove(empresa: Empresa) {
     const { id } = empresa;
 
     this.empresaService.removerEmpresa(id as number).subscribe(() => {
